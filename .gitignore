@@ -1,0 +1,35 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.db
+*.sqlite3
+
+# Virtual environment
+env/
+venv/
+
+# Django
+*.log
+*.pot
+*.py[cod]
+__pycache__/
+db.sqlite3
+media/
+staticfiles/
+
+
+
+# Elasticsearch
+*.tar.gz
+*.zip
+*.gz
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Environment files
+.env
+
