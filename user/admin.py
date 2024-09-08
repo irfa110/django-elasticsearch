@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from user.models import User
+from haystack.query import SearchQuerySet
 
 
 class UserAdmin(BaseUserAdmin):
@@ -25,6 +26,16 @@ class UserAdmin(BaseUserAdmin):
                      'phone_number']
     ordering = ('-date_joined', )
     list_per_page = 25
+
+    def get_search_results(self, request, queryset, search_term):
+        if search_term:
+            index = 1000
+            sqs = SearchQuerySet().models(User).filter(
+                content=search_term)[:index]
+            ids = [result.pk for result in sqs]
+            queryset = queryset.filter(pk__in=ids)
+            return queryset, False
+        return super().get_search_results(request, queryset, search_term)
 
 
 admin.site.register(User, UserAdmin)

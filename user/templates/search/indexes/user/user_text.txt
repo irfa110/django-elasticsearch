@@ -1,0 +1,6 @@
+{{ object.text }}
+{{ object.id }}
+{{ object.email }}
+{{ object.first_name }}
+{{ object.last_name }}
+{{ object.phone_number }}
